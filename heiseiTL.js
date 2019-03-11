@@ -11,6 +11,8 @@ qa[7] = ["Windows Vista 全世界に一般リリース",20070130,2007,1,30];
 qa[8] = ["LINEサービス開始",20110623,2011,6,23];
 qa[9] = ["女々しくて発売",20091021,2009,10,21];
 
+var history = "";
+result = new Array();
 
 //初期設定
 count = 0; //問題番号
@@ -29,17 +31,15 @@ quiz();
 //問題表示
 //問題表示
 function quiz() {
-	var s, n, r;
-  var before = "before";
-  var after = "after";
+	var choices, r;
   r = 1; //ゆくゆくはランダムにしたい
 	//問題
 	document.getElementById("text_q").innerHTML = (count + 1) + "問目：" + qa[count][0] + "は、" + qa[count+r][0] +"より？";
 	//選択肢
-	s = "";
-	s += "【<a href='javascript:answer(0)'>前</a>】";
-	s += "【<a href='javascript:answer(1)'>後</a>】";
-	document.getElementById("text_s").innerHTML = s;
+	choices = "";
+	choices += "【<a href='javascript:answer(0)'>前</a>】";
+	choices += "【<a href='javascript:answer(1)'>後</a>】";
+	document.getElementById("text_s").innerHTML = choices;
 }
 
 //解答表示
@@ -50,17 +50,22 @@ function answer(num) {
 	//答え合わせ
   if(qa[count][1]<qa[count+r][1] && num === 0){
     answers[count] = "<p>【正解】</p>" ;
+		result[count] = "<li>" + (count + 1) + "問目：○</li>"
   } else if (qa[count][1]>qa[count+r][1] && num === 1){
     answers[count] = "<p>【正解】</p>";
+		result[count] = "<li>" + (count + 1) + "問目：○</li>"
   } else {
     answers[count] = "<p>【不正解】</p>"
+		result[count] = "<li>" + (count + 1) + "問目：×</li>"
   }
 
-  answers[count] += "<p>" + qa[count][0] + "は、" + qa[count][2] + "年" + qa[count][3] + "月" +qa[count][4] + "日</p>";
-  answers[count] += "<p>" + qa[count+r][0] + "は、" + qa[count+r][2] + "年" + qa[count+r][3] + "月" +qa[count+r][4] + "日</p>";
+  var commentary = ""
+  commentary += "<p>" + qa[count][0] + "は、" + qa[count][2] + "年" + qa[count][3] + "月" +qa[count][4] + "日</p>";
+  commentary += "<p>" + qa[count+r][0] + "は、" + qa[count+r][2] + "年" + qa[count+r][3] + "月" +qa[count+r][4] + "日</p>";
 
 	s += answers[count];
-	document.getElementById("text_a").innerHTML = s;
+	document.getElementById("text_a").innerHTML = s + commentary;
+	document.getElementById("text_result").innerHTML += result[count];
 
 	//次の問題を表示
 	count++;
