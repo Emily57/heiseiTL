@@ -10,8 +10,8 @@ qa[6] = ["mixi(SNS)開始",20040303,2004,3,3];
 qa[7] = ["Windows Vista 全世界に一般リリース",20070130,2007,1,30];
 qa[8] = ["LINEサービス開始",20110623,2011,6,23];
 qa[9] = ["女々しくて発売",20091021,2009,10,21];
+qa[10] = ["郵政民営化",20071001,2007,10,01]
 
-var history = "";
 result = new Array();
 
 //初期設定
@@ -23,6 +23,13 @@ function setReady() {
 	count = 0; //問題番号
 	answers = new Array(); //解答記録
 	quiz(); //最初の問題
+	document.getElementById("text_a").innerHTML = "";
+}
+
+function setReset() {
+	result = new Array();
+	document.getElementById("text_result").innerHTML = "";
+	setReady();
 }
 
 //最初の問題
@@ -34,7 +41,7 @@ function quiz() {
 	var choices, r;
   r = 1; //ゆくゆくはランダムにしたい
 	//問題
-	document.getElementById("text_q").innerHTML = (count + 1) + "問目：" + qa[count][0] + "は、" + qa[count+r][0] +"より？";
+	document.getElementById("text_quiz").innerHTML = (count + 1) + "問目：" + qa[count][0] + "は、" + qa[count+r][0] +"より？";
 	//選択肢
 	choices = "";
 	choices += "【<a href='javascript:answer(0)'>前</a>】";
@@ -69,11 +76,13 @@ function answer(num) {
 
 	//次の問題を表示
 	count++;
-	if (count < qa.length) {
+	if (count+1 < qa.length) {
 		quiz();
 	} else {
 		//終了
-		document.getElementById("text_q").innerHTML = "";
-		document.getElementById("text_s").innerHTML = "";
+		document.getElementById("text_quiz").innerHTML = "( ˙ㅂ˙)ﾉｼ　終了！";
+		s = "【<a href='javascript:setReady()'>もう一度</a>】";
+		s += "【<a href='javascript:setReset()'>成績をリセットして最初から</a>】";
+		document.getElementById("text_s").innerHTML = s;
 	}
 }
