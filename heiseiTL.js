@@ -48,12 +48,16 @@ quiz();
 //問題表示
 function quiz() {
 	var choices = "";
+	var timeline = (count + 1) + "問目：";
+	timeline += "<p>⬆︎前</p>";
+	timeline += "<p>【<a href='javascript:answer(0)'>①</a>】</p>";
+	timeline += "<p>" + qa[random_number[1]][0] + "<p>";
+	timeline += "<p>【<a href='javascript:answer(1)'>②</a>】</p>";
+	timeline += "<p>⬇︎後</p>";
+	timeline += "<br>";
+	timeline += "<p>【問】" + qa[random_number[0]][0] + "はどこに当てはまる？</p>";
 	//問題
-	document.getElementById("text_quiz").innerHTML = (count + 1) + "問目：" + qa[random_number[0]][0] + "は、" + qa[random_number[1]][0] +"より？";
-	//選択肢
-	choices += "【<a href='javascript:answer(0)'>前</a>】";
-	choices += "【<a href='javascript:answer(1)'>後</a>】";
-	document.getElementById("text_s").innerHTML = choices;
+	document.getElementById("text_quiz").innerHTML = timeline;
 }
 
 //解答表示
