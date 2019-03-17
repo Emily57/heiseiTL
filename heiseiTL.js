@@ -23,14 +23,18 @@ setReady();
 function setReady() {
 	count = 0; //問題番号
 	answers = new Array(); //解答記録
-	random_number[0]= Math.floor( Math.random() * qa.length );
-	random_number[1]= Math.floor( Math.random() * qa.length );
-	while(random_number[0]===random_number[1]){
-		random_number[1]= Math.floor( Math.random() * qa.length );
+
+	for (var i = qa.length - 1; i >= 0; i--){
+	  // 0~iのランダムな数値を取得
+		var j = Math.floor( Math.random() * ( i + 1 ) );
+		// 配列の数値を入れ替える
+		[qa[i], qa[j]] = [qa[j], qa[i]]
 	}
+
 	quiz(); //最初の問題
 	document.getElementById("text_a").innerHTML = "";
 }
+
 
 function setReset() {
 	result = new Array();
@@ -51,23 +55,22 @@ function quiz() {
 	var timeline = (count + 1) + "問目：";
 	timeline += "<p>⬆︎前</p>";
 	timeline += "<p>【<a href='javascript:answer(0)'>①</a>】</p>";
-	timeline += "<p>" + qa[random_number[1]][0] + "<p>";
+	timeline += "<p>" + qa[count][0] + "<p>";
 	timeline += "<p>【<a href='javascript:answer(1)'>②</a>】</p>";
 	timeline += "<p>⬇︎後</p>";
 	timeline += "<br>";
-	timeline += "<p>【問】" + qa[random_number[0]][0] + "はどこに当てはまる？</p>";
+	timeline += "<p>【問】" + qa[count+1][0] + "はどこに当てはまる？</p>";
 	//問題
 	document.getElementById("text_quiz").innerHTML = timeline;
 }
 
 //解答表示
 function answer(num) {
-	var s = (count + 1) + "問目：" + qa[[random_number[0]]][0] + "は、" + qa[random_number[1]][0] +"より？";
-	//答え合わせ
-  if(qa[[random_number[0]]][1]<qa[random_number[1]][1] && num === 0){
+	var s = "";
+  if(qa[count][1] > qa[count+1][1] && num === 0){
     answers[count] = "<p>【正解】</p>" ;
 		result[count] = "<li>" + (count + 1) + "問目：○</li>"
-  } else if (qa[[random_number[0]]][1]>qa[random_number[1]][1] && num === 1){
+  } else if (qa[count][1] < qa[count+1][1] && num === 1){
     answers[count] = "<p>【正解】</p>";
 		result[count] = "<li>" + (count + 1) + "問目：○</li>"
   } else {
@@ -76,8 +79,8 @@ function answer(num) {
   }
 
   var commentary = ""
-  commentary += "<p>" + qa[[random_number[0]]][0] + "は、" + qa[[random_number[0]]][2] + "年" + qa[[random_number[0]]][3] + "月" +qa[[random_number[0]]][4] + "日</p>";
-  commentary += "<p>" + qa[random_number[1]][0] + "は、" + qa[random_number[1]][2] + "年" + qa[random_number[1]][3] + "月" +qa[random_number[1]][4] + "日</p>";
+  commentary += "<p>" + qa[count+1][0] + "は、" + qa[count+1][2] + "年" + qa[count+1][3] + "月" +qa[count+1][4] + "日</p>";
+  commentary += "<p>" + qa[count][0] + "は、" + qa[count][2] + "年" + qa[count][3] + "月" +qa[count][4] + "日</p>";
 
 	s += answers[count];
 	document.getElementById("text_a").innerHTML = s + commentary;
@@ -86,11 +89,6 @@ function answer(num) {
 	//次の問題を表示
 	count++;
 	if (count+1 < qa.length) {
-		random_number[0]= Math.floor( Math.random() * qa.length );
-		random_number[1]= Math.floor( Math.random() * qa.length );
-		while(random_number[0]===random_number[1]){
-			random_number[1]= Math.floor( Math.random() * qa.length );
-		}
 		quiz();
 	} else {
 		//終了
