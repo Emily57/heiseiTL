@@ -62,16 +62,17 @@ function quiz() {
 		}
 	}
 
-	var timeline = (count + 1) + "問目：";
+	var timeline = "<p><font size='6'>" + (count + 1) + "</font>問目：[ " + qa[count+2][0] + " ]　は、いつ？</p>";
 	timeline += "<p>⬆︎前</p>";
 	for(i=0; i <= count+1; i++){
-		timeline += "<p>【<a href='javascript:answer(" + i + ")'>★</a>】</p>";
+		timeline += "<input type='button' value='' class='choices_btn' onclick='answer( " + i + ")'>";
 		timeline += "<p>" + tl[i][0] + "<p>";
 	}
-	timeline += "<p>【<a href='javascript:answer(" + count+2 + ")'>★</a>】</p>";
+	lastqa = count+2; //string になってしまうので、事前に格納
+	timeline += "<input type='button' value='' class='choices_btn' onclick='answer( "+ lastqa + ")'>";
 	timeline += "<p>⬇︎後</p>";
 	timeline += "<br>";
-	timeline += "<p>【問】" + qa[count+2][0] + "はどこに当てはまる？</p>";
+
 	//問題
 	document.getElementById("text_quiz").innerHTML = timeline;
 }
@@ -91,10 +92,10 @@ function answer(num) {
 	}
 
 	if(num === seikai){
-    answers[count] = "<p>" + (count + 1) + "問目：【正解】</p>" ;
+    answers[count] = "<p>" + (count + 1) + "問目：【正解】</p>";
 		result[count] = "<li>" + (count + 1) + "問目：○</li>"
   } else{
-		answers[count] = "<p>" + (count + 1) + "問目：【不正解】</p>"
+		answers[count] = "<p>" + (count + 1) + "問目：【不正解】</p>";
 		result[count] = "<li>" + (count + 1) + "問目：×</li>"
   }
 	document.getElementById("text_s").innerHTML = answers[count];
