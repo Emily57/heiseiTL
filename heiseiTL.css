@@ -15,14 +15,21 @@ h1{
   margin: auto;
 }
 
+#text_timeline{
+  text-align: center;
+  margin: auto;
+  /*border: dashed 2px #5d627b;*/
+}
+
 .choices_btn, .choices_btn:hover{
   outline : none;
   min-width: 400px;
   max-width: 500px;
+  min-height: 50px;
   padding: 0.5em 1em;
   margin: 2em;
   background: white;
-  border: dashed 2px #5d627b;
+  border: dashed 1px #5d627b;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
 
@@ -34,7 +41,44 @@ h1{
 }
 
 .choices_btn:active {
-  border: dashed 2px #dcdcdc;
+  border: dashed 1px #dcdcdc;
+}
+
+#tl, #qa{
+  min-width: 400px;
+  max-width: 500px;
+  margin: 3em;
+  position: relative;
+  background: #fff0cd;
+  box-shadow: 0px 0px 0px 5px #fff0cd;
+  border: dashed 1px white;
+  padding: 0.2em 0.5em;
+  color: #454545;
+}
+
+#qa{
+    background: #ffe6ea;
+    box-shadow: 0px 0px 0px 5px #ffe6ea;
+}
+
+#tl:after ,#qa:after{
+    position: absolute;
+    content: '';
+    right: -7px;
+    top: -7px;
+    border-width: 0 15px 15px 0;
+    border-style: solid;
+    border-color: #ffdb88 #fff #ffdb88;
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+#qa:after{
+    border-color: #ffc0cb #fff #ffc0cb;
+}
+
+#tl p, #qa p{
+    margin: 0;
+    padding: 0;
 }
 
 .flex{

@@ -12,6 +12,7 @@ qa[8] = ["LINEサービス開始",20110623,2011,6,23];
 qa[9] = ["女々しくて発売",20091021,2009,10,21];
 qa[10] = ["郵政民営化",20071001,2007,10,01];
 qa[11] = ["新潟県中越地震",20041023,2004,10,23];
+qa[12] = ["阪神淡路大震災",19950117,1995,01,17];
 
 var tl = [];
 
@@ -32,7 +33,7 @@ function setReady() {
 	}
 
 	quiz(); //最初の問題
-	document.getElementById("text_a").innerHTML = "";
+	document.getElementById("text_all_timeline").innerHTML = "";
 }
 
 
@@ -62,11 +63,11 @@ function quiz() {
 		}
 	}
 
-	var timeline = "<p><font size='6'>" + (count + 1) + "</font>問目：[ " + qa[count+2][0] + " ]　は、いつ？</p>";
-	timeline += "<p>⬆︎前</p>";
+	var textQuiz = "<p><font size='6'>" + (count + 1) + "</font>問目：これはいつの出来事？</p><div id='qa'><p>" + qa[count+2][0] + "</p></div>";
+	var timeline = "<p>⬆︎前</p>";
 	for(i=0; i <= count+1; i++){
 		timeline += "<input type='button' value='' class='choices_btn' onclick='answer( " + i + ")'>";
-		timeline += "<p>" + tl[i][0] + "<p>";
+		timeline += "<div id='tl'><p>" + tl[i][0] + "<p></div>";
 	}
 	lastqa = count+2; //string になってしまうので、事前に格納
 	timeline += "<input type='button' value='' class='choices_btn' onclick='answer( "+ lastqa + ")'>";
@@ -74,7 +75,8 @@ function quiz() {
 	timeline += "<br>";
 
 	//問題
-	document.getElementById("text_quiz").innerHTML = timeline;
+  document.getElementById("text_quiz").innerHTML = textQuiz;
+	document.getElementById("text_timeline").innerHTML = timeline;
 }
 
 //解答表示
@@ -108,6 +110,7 @@ function answer(num) {
 	} else {
 		//終了
 		document.getElementById("text_quiz").innerHTML = "( ˙ㅂ˙)ﾉｼ　終了！";
+		document.getElementById("text_timeline").innerHTML = "";
 
 		tl[tl.length] = qa[tl.length];
 		for(var x = tl.length - 1; x >= 0; x--){
@@ -120,11 +123,11 @@ function answer(num) {
 			}
 		}
 
-		var commentary = ""
+		var commentary = "<p>こたえ</p>"
 		for(var z = 0; z<tl.length; z++){
-			commentary += "<p>" + tl[z][0] + "は、" + tl[z][2] + "年" + tl[z][3] + "月" +tl[z][4] + "日</p>";
+			commentary += "<p>" + tl[z][0] + "：" + tl[z][2] + "年" + tl[z][3] + "月" +tl[z][4] + "日</p>";
 		}
-		document.getElementById("text_a").innerHTML = commentary;
+		document.getElementById("text_all_timeline").innerHTML = commentary;
 		var s = "【<a href='javascript:setReady()'>もう一度</a>】";
 		s += "【<a href='javascript:setReset()'>成績をリセットして最初から</a>】";
 		document.getElementById("text_s").innerHTML = s;
