@@ -64,18 +64,21 @@ function quiz() {
 	}
 
 	var textQuiz = "<p><font size='6'>" + (count + 1) + "</font>問目：これはいつの出来事？</p><div id='qa'><p>" + qa[count+2][0] + "</p></div>";
-	var timeline = "<p>⬆︎前</p>";
+	var before = "<p><span id='before'>1989</span></p>";
+	var after = "<p><span id='after'>2019</span></p>";
+	var timeline = "";
 	for(i=0; i <= count+1; i++){
 		timeline += "<input type='button' value='' class='choices_btn' onclick='answer( " + i + ")'>";
 		timeline += "<div id='tl'><p>" + tl[i][0] + "<p></div>";
 	}
 	lastqa = count+2; //string になってしまうので、事前に格納
 	timeline += "<input type='button' value='' class='choices_btn' onclick='answer( "+ lastqa + ")'>";
-	timeline += "<p>⬇︎後</p>";
+
 	timeline += "<br>";
 
 	//問題
   document.getElementById("text_quiz").innerHTML = textQuiz;
+	document.getElementById("time_axis").innerHTML = before + after;
 	document.getElementById("text_timeline").innerHTML = timeline;
 }
 

@@ -15,10 +15,34 @@ h1{
   margin: auto;
 }
 
+#time_axis{
+  text-align: left;
+  min-height: 2000px;
+  min-width: 30px;
+  margin: 0;
+  position: relative;
+  background: -moz-linear-gradient(top, #ff6347, #fff);
+  background: -webkit-linear-gradient(top, #ff6347, #fff);
+  background: linear-gradient(to bottom, #ff6347, #fff);
+}
+
+#time_axis p{
+  font-size: 200%;
+  color: #ffffff;
+}
+
+#time_axis #after{
+  position: absolute;
+  bottom: 0;
+  color: #ff6347;
+}
+
 #text_timeline{
   text-align: center;
-  margin: auto;
-  /*border: dashed 2px #5d627b;*/
+  margin: 0;
+  display: table-cell;
+  vertical-align: middle;
+  /*border: dashed 2px #5d6222;*/
 }
 
 .choices_btn, .choices_btn:hover{
@@ -27,7 +51,7 @@ h1{
   max-width: 500px;
   min-height: 50px;
   padding: 0.5em 1em;
-  margin: 2em;
+  margin: 1em;
   background: white;
   border: dashed 1px #5d627b;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
@@ -47,7 +71,7 @@ h1{
 #tl, #qa{
   min-width: 400px;
   max-width: 500px;
-  margin: 3em;
+  margin: 2em;
   position: relative;
   background: #fff0cd;
   box-shadow: 0px 0px 0px 5px #fff0cd;
@@ -83,4 +107,6 @@ h1{
 
 .flex{
   display: flex;
+  display: table;
+  width: 100%;
 }
