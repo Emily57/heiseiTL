@@ -23,15 +23,27 @@ h1:before {
 
 #game_screen{
   min-width: 500px;
-  max-width: 600px;
   margin: auto;
+}
+
+
+#text_quiz{
+  text-align: left;
+  min-width: 300px;
+  max-height: 200px;
+  position: relative;
+  background: -moz-linear-gradient(top, #ff6347, #fff);
+  top: 160px;
+  align-items: center;
+  justify-content: center;
+  position: -webkit-sticky;
+  position: sticky;
 }
 
 #time_axis{
   text-align: left;
-  min-height: 2000px;
-  min-width: 30px;
   margin: 0;
+  padding: 0;
   position: relative;
   background: -moz-linear-gradient(top, #ff6347, #fff);
   background: -webkit-linear-gradient(top, #ff6347, #fff);
@@ -39,7 +51,8 @@ h1:before {
 }
 
 #time_axis p{
-  font-size: 200%;
+  font-size: 150%;
+  margin: 0;
   color: #ffffff;
 }
 
@@ -93,6 +106,8 @@ h1:before {
 }
 
 #qa{
+    min-width: 300px;
+    max-width: 400px;
     background: #ffe6ea;
     box-shadow: 0px 0px 0px 5px #ffe6ea;
 }
@@ -117,8 +132,11 @@ h1:before {
     padding: 0;
 }
 
+
+
+
 .flex{
-  display: flex;
   display: table;
   width: 100%;
+  display: flex;
 }

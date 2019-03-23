@@ -63,7 +63,7 @@ function quiz() {
 		}
 	}
 
-	var textQuiz = "<p><font size='6'>" + (count + 1) + "</font>問目：これはいつの出来事？</p><div id='qa'><p>" + qa[count+2][0] + "</p></div>";
+	var textQuiz = "<p><font size='6'>" + (count + 1) + "</font>問目：いつの出来事？</p><div id='qa'><p>" + qa[count+2][0] + "</p></div>";
 	var before = "<p><span id='before'>1989</span></p>";
 	var after = "<p><span id='after'>2019</span></p>";
 	var timeline = "";
@@ -114,6 +114,7 @@ function answer(num) {
 		//終了
 		document.getElementById("text_quiz").innerHTML = "( ˙ㅂ˙)ﾉｼ　終了！";
 		document.getElementById("text_timeline").innerHTML = "";
+		document.getElementById("time_axis").innerHTML = "";
 
 		tl[tl.length] = qa[tl.length];
 		for(var x = tl.length - 1; x >= 0; x--){
