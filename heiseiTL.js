@@ -24,6 +24,7 @@ setReady();
 function setReady() {
 	tl.length = 0;
 	document.getElementById("select_screen").innerHTML = "<div id='text_quiz'></div>";
+	document.getElementById("right_screen").innerHTML = "<div id='text_result'></div>";
 	count = 0; //問題番号
 	answers = new Array(); //解答記録
 
@@ -41,7 +42,7 @@ function setReady() {
 
 function setReset() {
 	result = new Array();
-	document.getElementById("text_result").innerHTML = "";
+	document.getElementById("text_record").innerHTML = "";
 	setReady();
 }
 
@@ -97,26 +98,26 @@ function answer(num) {
 	}
 
 	if(num === seikai){
-    answers[count] = "<p>" + (count + 1) + "問目：【正解】</p>";
+    answers[count] = "<div id='text_result_title_red'>正解！</div><p>";
+    answers[count] += "<p>" + qa[count+2][0] + "：</p><p>" + qa[count+2][2] + "年" + qa[count+2][3] + "月" + qa[count+2][4] + "日</p>";
 		result[count] = "<li>" + (count + 1) + "問目：○</li>"
   } else{
-		answers[count] = "<p>" + (count + 1) + "問目：【不正解】</p>";
+		answers[count] = "<div id='text_result_title_blue'>不正解</div><p>";
+    answers[count] += "<p>" + qa[count+2][0] + "：</p><p>" + qa[count+2][2] + "年" + qa[count+2][3] + "月" + qa[count+2][4] + "日</p>";
 		result[count] = "<li>" + (count + 1) + "問目：×</li>"
   }
-	document.getElementById("text_s").innerHTML = answers[count];
-	document.getElementById("text_result").innerHTML += result[count];
+	document.getElementById("text_result").innerHTML = answers[count];
+	document.getElementById("text_record").innerHTML += result[count];
 
 	//次の問題を表示
 	count++;
 	if (count+2 < qa.length) {
 		quiz();
-		document.getElementById("text_result").innerHTML = tl.length +" お　"+qa.length + "いえあ" + count;
 	} else {
 		//終了
 		document.getElementById("text_quiz").innerHTML = "";
 		document.getElementById("text_timeline").innerHTML = "";
 		document.getElementById("time_axis").innerHTML = "";
-								document.getElementById("text_result").innerHTML = tl.length +" お　"+qa.length + "んおー" + count;
 
 		tl[tl.length] = qa[tl.length];
 		for(var x = tl.length - 1; x >= 0; x--){
@@ -126,7 +127,7 @@ function answer(num) {
 				break;
 			}
 		}
-						document.getElementById("text_result").innerHTML += tl.length +" お　"+qa.length + "いえあ!" + count;
+
 
 		var commentary = "<p>こたえ</p>"
 		for(var z = 0; z<tl.length; z++){
@@ -134,7 +135,8 @@ function answer(num) {
 		}
 		document.getElementById("text_all_timeline").innerHTML = commentary;
 		var s = "( ˙ㅂ˙)ﾉｼ　終了！【<a href='javascript:setReset()'>成績をリセットして最初から</a>】";
+		document.getElementById("text_result").innerHTML = "";
 		document.getElementById("select_screen").innerHTML = s;
-		/*document.getElementById("text_s").innerHTML = s;*/
+		document.getElementById("right_screen").innerHTML = "";
 	}
 }

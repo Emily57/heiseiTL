@@ -100,8 +100,41 @@ h1:before {
   margin: 0;
   display: table-cell;
   vertical-align: middle;
-  /*border: dashed 2px #5d6222;*/
 }
+
+#text_result {
+    max-height: 200px;
+    min-width: 400px;
+    margin: 2em 0;
+    background: #f5f5f5;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+#text_result #text_result_title_blue,  #text_result_title_red{
+    font-size: 1.2em;
+    background: #5fc2f5;
+    padding: 0px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+#text_result #text_result_title_red{
+    background: #ff6347;
+}
+
+#text_result p {
+    padding: 5px 20px 15px 20px;
+    margin: 0;
+}
+
+
+
+
+
+
+
 
 .choices_btn, .choices_btn:hover{
   outline : none;
