@@ -29,7 +29,6 @@ h1:before {
 
 #text_quiz{
   text-align: left;
-  min-width: 100px;
   max-height: 150px;
   position: relative;
   background: -moz-linear-gradient(top, #ff6347, #fff);
