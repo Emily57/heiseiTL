@@ -24,7 +24,8 @@ setReady();
 function setReady() {
 	tl.length = 0;
 	document.getElementById("select_screen").innerHTML = "<div id='text_quiz'></div>";
-	document.getElementById("right_screen").innerHTML = "<div id='text_result'></div>";
+	document.getElementById("right_screen").innerHTML = "<div id='text_result'></div><div id='text_record'></div>";
+	document.getElementById("text_record").innerHTML = "<h2>成績</h2>";
 	count = 0; //問題番号
 	answers = new Array(); //解答記録
 
@@ -42,7 +43,6 @@ function setReady() {
 
 function setReset() {
 	result = new Array();
-	document.getElementById("text_record").innerHTML = "";
 	setReady();
 }
 
@@ -120,7 +120,7 @@ function answer(num) {
 		document.getElementById("time_axis").innerHTML = "";
 
 		tl[tl.length] = qa[tl.length];
-		for(var x = tl.length - 1; x >= 0; x--){
+		for(var x = tl.length - 1; x > 0; x--){
 			if(tl[x][1] < tl[x-1][1]){
 				[tl[x], tl[x-1]] = [tl[x-1], tl[x]]
 			} else {
@@ -133,10 +133,15 @@ function answer(num) {
 		for(var z = 0; z<tl.length; z++){
 			commentary += "<p>" + tl[z][0] + "：" + tl[z][2] + "年" + tl[z][3] + "月" +tl[z][4] + "日</p>";
 		}
+
 		document.getElementById("text_all_timeline").innerHTML = commentary;
 		var s = "( ˙ㅂ˙)ﾉｼ　終了！【<a href='javascript:setReset()'>成績をリセットして最初から</a>】";
 		document.getElementById("text_result").innerHTML = "";
-		document.getElementById("select_screen").innerHTML = s;
 		document.getElementById("right_screen").innerHTML = "";
+		document.getElementById("select_screen").innerHTML = s + "<div id='text_record'></div>";
+		document.getElementById("text_record").innerHTML = "<h2>成績</h2>";
+		for(var z = 0; z<tl.length-2; z++){
+			document.getElementById("text_record").innerHTML += result[z];
+		}
 	}
 }
