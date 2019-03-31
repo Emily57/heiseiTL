@@ -24,7 +24,7 @@ setReady();
 function setReady() {
 	tl.length = 0;
 	document.getElementById("select_screen").innerHTML = "<div id='text_quiz'></div>";
-	document.getElementById("right_screen").innerHTML = "<div id='text_result'></div><div id='text_record'></div>";
+	document.getElementById("right_screen").innerHTML = "<div id='text_result'></div>";
 	document.getElementById("text_record").innerHTML = "<h2>成績</h2>";
 	count = 0; //問題番号
 	answers = new Array(); //解答記録
@@ -138,10 +138,6 @@ function answer(num) {
 		var s = "( ˙ㅂ˙)ﾉｼ　終了！【<a href='javascript:setReset()'>成績をリセットして最初から</a>】";
 		document.getElementById("text_result").innerHTML = "";
 		document.getElementById("right_screen").innerHTML = "";
-		document.getElementById("select_screen").innerHTML = s + "<div id='text_record'></div>";
-		document.getElementById("text_record").innerHTML = "<h2>成績</h2>";
-		for(var z = 0; z<tl.length-2; z++){
-			document.getElementById("text_record").innerHTML += result[z];
-		}
+		document.getElementById("select_screen").innerHTML = s;
 	}
 }

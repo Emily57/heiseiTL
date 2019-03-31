@@ -134,6 +134,7 @@ h1:before {
   margin: 2em 0;
   font-weight: bold;
   border: solid 1px #000000;
+  max-width: 300px;
 }
 
 #text_record li{
