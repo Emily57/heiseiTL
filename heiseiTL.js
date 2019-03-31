@@ -101,10 +101,12 @@ function answer(num) {
     answers[count] = "<div id='text_result_title_red'>正解！</div><p>";
     answers[count] += "<p>" + qa[count+2][0] + "：</p><p>" + qa[count+2][2] + "年" + qa[count+2][3] + "月" + qa[count+2][4] + "日</p>";
 		result[count] = "<li>" + (count + 1) + "問目：○</li>"
+		qa[count+2][5] = "○";
   } else{
 		answers[count] = "<div id='text_result_title_blue'>不正解</div><p>";
     answers[count] += "<p>" + qa[count+2][0] + "：</p><p>" + qa[count+2][2] + "年" + qa[count+2][3] + "月" + qa[count+2][4] + "日</p>";
 		result[count] = "<li>" + (count + 1) + "問目：×</li>"
+		qa[count+2][5] = "×";
   }
 	document.getElementById("text_result").innerHTML = answers[count];
 	document.getElementById("text_record").innerHTML += result[count];
@@ -129,8 +131,10 @@ function answer(num) {
 
 
 		var commentary = "<table>";
+		qa[0][5] = "-";
+		qa[1][5] = "-";
 		for(var z = 0; z<tl.length; z++){
-			commentary += "<tr><td>" + tl[z][2] + "年" + tl[z][3] + "月" +tl[z][4] + "日</td><td>" + tl[z][0] + "</td></tr>";
+			commentary += "<tr><td>" + tl[z][2] + "年" + tl[z][3] + "月" +tl[z][4] + "日</td><td>" + tl[z][0] + "</td><td>"+ tl[z][5] +"</td></tr>";
 		}
 		document.getElementById("text_all_timeline").innerHTML = commentary;
 		document.getElementById("left_screen").innerHTML ="";
