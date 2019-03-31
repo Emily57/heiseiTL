@@ -23,8 +23,8 @@ setReady();
 //初期設定
 function setReady() {
 	tl.length = 0;
-	document.getElementById("select_screen").innerHTML = "<div id='text_quiz'></div>";
-	document.getElementById("right_screen").innerHTML = "<div id='text_result'></div>";
+	document.getElementById("select_screen").innerHTML ="";
+	document.getElementById("left_screen").innerHTML =  "<div id='text_quiz'></div><div id='text_result'></div>";
 	document.getElementById("text_record").innerHTML = "<h2>成績</h2>";
 	count = 0; //問題番号
 	answers = new Array(); //解答記録
@@ -65,8 +65,8 @@ function quiz() {
 	}
 
 	var textQuiz = "<p><font size='6'>" + (count + 1) + "</font>問目：いつの出来事？</p><div id='qa'><p>" + qa[count+2][0] + "</p></div>";
-	var before = "<p><span id='before'>1989</span></p>";
-	var after = "<p><span id='after'>2019</span></p>";
+	var before = "<p><span id='before'>1989<br>　⬆︎</span></p>";
+	var after = "<p><span id='after'>　⬇︎<br>2019</span></p>";
 	var timeline = "";
 	for(i=0; i <= count+1; i++){
 		timeline += "<input type='button' value='' class='choices_btn' onclick='answer( " + i + ")'>";
@@ -117,7 +117,6 @@ function answer(num) {
 		//終了
 		document.getElementById("text_quiz").innerHTML = "";
 		document.getElementById("text_timeline").innerHTML = "";
-		document.getElementById("time_axis").innerHTML = "";
 
 		tl[tl.length] = qa[tl.length];
 		for(var x = tl.length - 1; x > 0; x--){
@@ -129,15 +128,14 @@ function answer(num) {
 		}
 
 
-		var commentary = "<p>こたえ</p>"
+		var commentary = "<table>";
 		for(var z = 0; z<tl.length; z++){
-			commentary += "<p>" + tl[z][0] + "：" + tl[z][2] + "年" + tl[z][3] + "月" +tl[z][4] + "日</p>";
+			commentary += "<tr><td>" + tl[z][2] + "年" + tl[z][3] + "月" +tl[z][4] + "日</td><td>" + tl[z][0] + "</td></tr>";
 		}
-
 		document.getElementById("text_all_timeline").innerHTML = commentary;
-		var s = "( ˙ㅂ˙)ﾉｼ　終了！【<a href='javascript:setReset()'>成績をリセットして最初から</a>】";
-		document.getElementById("text_result").innerHTML = "";
+		document.getElementById("left_screen").innerHTML ="";
 		document.getElementById("right_screen").innerHTML = "";
+		var s = "( ˙ㅂ˙)ﾉｼ　終了！【<a href='javascript:setReset()'>成績をリセットして最初から</a>】";
 		document.getElementById("select_screen").innerHTML = s;
 	}
 }
