@@ -41,26 +41,6 @@ h1:before {
   margin: 1em;
 }
 
-#text_record {
-  padding: 2em;
-  margin: 0 10px;
-  font-weight: bold;
-  border: solid 1px #000000;
-  min-width: 200px;
-  min-height: 500px;
-  max-height: 500px;
-}
-
-#text_record li{
-  border-bottom: dotted 1px ;
-  margin: 1em;
-}
-
-#text_record h2{
-  margin: 0;
-  text-align: center;
-}
-
 #text_quiz {
   text-align: left;
   max-height: 150px;

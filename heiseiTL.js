@@ -25,7 +25,6 @@ function setReady() {
 	tl.length = 0;
 	document.getElementById("select_screen").innerHTML ="";
 	document.getElementById("left_screen").innerHTML =  "<div id='text_quiz'></div><div id='text_result'></div>";
-	document.getElementById("text_record").innerHTML = "<h2>成績</h2>";
 	count = 0; //問題番号
 	answers = new Array(); //解答記録
 
@@ -109,7 +108,6 @@ function answer(num) {
 		qa[count+2][5] = "×";
   }
 	document.getElementById("text_result").innerHTML = answers[count];
-	document.getElementById("text_record").innerHTML += result[count];
 
 	//次の問題を表示
 	count++;
@@ -138,7 +136,6 @@ function answer(num) {
 		}
 		document.getElementById("text_all_timeline").innerHTML = commentary;
 		document.getElementById("left_screen").innerHTML ="";
-		document.getElementById("right_screen").innerHTML = "";
 		var s = "( ˙ㅂ˙)ﾉｼ　終了！【<a href='javascript:setReset()'>成績をリセットして最初から</a>】";
 		document.getElementById("select_screen").innerHTML = s;
 	}
